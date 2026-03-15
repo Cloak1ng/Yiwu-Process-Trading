@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yiwu Process Trading - Your Trusted Trading Partner</title>
+    <meta name="description" content="Yiwu Process Trading - Professional international trading services based in Yiwu, China. Quality products, reliable service, global reach.">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .hero-gradient {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        .nav-scrolled {
+            background: white;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        }
+        .mobile-menu {
+            transform: translateX(-100%);
+            transition: transform 0.3s ease-in-out;
+        }
+        .mobile-menu.active {
+            transform: translateX(0);
+        }
+        .overlay {
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease-in-out;
+        }
+        .overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 bg-white/90 backdrop-blur-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <a href="#" class="text-2xl font-bold gradient-text flex items-center gap-2">
+                        <i data-lucide="globe" class="w-8 h-8"></i>
+                        <span>Yiwu Process Trading</span>
+                    </a>
+                </div>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#home" class="text-gray-700 hover:text-purple-600 font-medium transition">Home</a>
+                    <a href="#about" class="text-gray-700 hover:text-purple-600 font-medium transition">About</a>
+                    <a href="#services" class="text-gray-700 hover:text-purple-600 font-medium transition">Services</a>
+                    <a href="#products" class="text-gray-700 hover:text-purple-600 font-medium transition">Products</a>
+                    <a href="#contact" class="px-6 py-2.5 bg-purple-600 text-white rounded-full font-medium hover:bg-purple-700 transition shadow-lg hover:shadow-xl">Contact Us</a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="text-gray-700 hover:text-purple-600 focus:outline-none">
+                        <i data-lucide="menu" class="w-6 h-6"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Overlay -->
+        <div id="overlay" class="overlay fixed inset-0 bg-black/50 z-40 md:hidden"></div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="mobile-menu fixed top-0 left-0 w-80 h-full bg-white z-50 shadow-2xl md:hidden">
+            <div class="p-6">
+                <div class="flex justify-between items-center mb-8">
+                    <span class="text-xl font-bold gradient-text">Menu</span>
+                    <button id="close-menu" class="text-gray-500 hover:text-purple-600">
+                        <i data-lucide="x" class="w-6 h-6"></i>
+                    </button>
+                </div>
+                <div class="flex flex-col space-y-4">
+                    <a href="#home" class="text-gray-700 hover:text-purple-600 font-medium text-lg py-2 border-b border-gray-100 mobile-link">Home</a>
+                    <a href="#about" class="text-gray-700 hover:text-purple-600 font-medium text-lg py-2 border-b border-gray-100 mobile-link">About</a>
+                    <a href="#services" class="text-gray-700 hover:text-purple-600 font-medium text-lg py-2 border-b border-gray-100 mobile-link">Services</a>
+                    <a href="#products" class="text-gray-700 hover:text-purple-600 font-medium text-lg py-2 border-b border-gray-100 mobile-link">Products</a>
+                    <a href="#contact" class="text-gray-700 hover:text-purple-600 font-medium text-lg py-2 border-b border-gray-100 mobile-link">Contact</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
+        <div class="absolute inset-0 hero-gradient opacity-10"></div>
+        <div class="absolute inset-0 bg-[url('http://static.photos/technology/1920x1080/1')] bg-cover bg-center opacity-5"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="text-center lg:text-left">
+                    <div class="inline-block px-4 py-2 bg-purple-100 text-purple-700 rounded-full text-sm font-semibold mb-6">
+                        🌍 Global Trading Solutions
+                    </div>
+                    <h1 class="text-4xl lg:text-6xl font-bold leading-tight mb-6 text-gray-900">
+                        Your Trusted Partner in <span class="gradient-text">China</span><br>Since 2006
+                    </h1>
+                    <p class="text-lg text-gray-600 mb-8 leading-relaxed">
+                        Based in the heart of Yiwu International Trade City since 2006 ,We connect businesses worldwide with quality products and reliable trading services.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                        <a href="#contact" class="px-8 py-4 bg-purple-600 text-white rounded-full font-semibold hover:bg-purple-700 transition shadow-lg hover:shadow-xl flex items-center justify-center gap-2">
+                            <span>Get in Touch</span>
+                            <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                        </a>
+                        <a href="#services" class="px-8 py-4 bg-white text-purple-600 border-2 border-purple-600 rounded-full font-semibold hover:bg-purple-50 transition flex items-center justify-center">
+                            Our Services
+                        </a>
+                    </div>
+                    
+                    <div class="mt-8 flex items-center justify-center lg:justify-start gap-6 text-sm text-gray-500">
+                        <div class="flex items-center gap-2">
+                            <i data-lucide="check-circle" class="w-5 h-5 text-green-500"></i>
+                            <span>Quality Assured</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <i data-lucide="check-circle" class="w-5 h-5 text-green-500"></i>
+                            <span>Fast Shipping</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <i data-lucide="check-circle" class="w-5 h-5 text-green-500"></i>
+                            <span>24/7 Support</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="relative">
+                    <div class="absolute inset-0 hero-gradient rounded-3xl transform rotate-3 opacity-20"></div>
+                    <img src="http://static.photos/office/800x600/42" alt="Yiwu Trading Office" class="relative rounded-3xl shadow-2xl w-full object-cover h-[400px] lg:h-[500px]">
+                    
+                    <!-- Floating Card -->
+                    <div class="absolute -bottom-6 -left-6 bg-white p-6 rounded-2xl shadow-xl max-w-xs hidden lg:block">
+                        <div class="flex items-center gap-4 mb-3">
+                            <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center">
+                                <i data-lucide="trending-up" class="w-6 h-6 text-purple-600"></i>
+                            </div>
+                            <div>
+                                <p class="text-sm text-gray-500">Export Volume</p>
+                                <p class="text-xl font-bold text-gray-900">50+ Countries</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="py-12 bg-white border-y border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                <div>
+                    <p class="text-3xl lg:text-4xl font-bold text-purple-600 mb-2">20+</p>
+                    <p class="text-gray-600 font-medium">Years Experience</p>
+                </div>
+                <div>
+                    <p class="text-3xl lg:text-4xl font-bold text-purple-600 mb-2">THOUSANDS+</p>
+                    <p class="text-gray-600 font-medium">Of Products Sourced</p>
+                </div>
+                <div>
+                    <p class="text-3xl lg:text-4xl font-bold text-purple-600 mb-2">30+</p>
+                    <p class="text-gray-600 font-medium">Countries Served</p>
+                </div>
+                <div>
+                    <p class="text-3xl lg:text-4xl font-bold text-purple-600 mb-2">ALL OUR</p>
+                    <p class="text-gray-600 font-medium">Clients are Satisfied</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 lg:py-32 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div class="order-2 lg:order-1 relative">
+                    <div class="grid grid-cols-2 gap-4">
+                        <img src="http://static.photos/workspace/400x500/101" alt="Trading workspace" class="rounded-2xl shadow-lg w-full h-64 object-cover mt-8">
+                        <img src="http://static.photos/industry/400x500/202" alt="Manufacturing" class="rounded-2xl shadow-lg w-full h-64 object-cover">
+                    </div>
+                    <div class="absolute -z-10 -bottom-4 -right-4 w-full h-full bg-purple-200 rounded-2xl"></div>
+                </div>
+                
+                <div class="order-1 lg:order-2">
+                    <div class="inline-block px-4 py-2 bg-purple-100 text-purple-700 rounded-full text-sm font-semibold mb-6">
+                        About Us
+                    </div>
+                    <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-6">
+                        Connecting Global Markets with <span class="gradient-text">Quality Products</span>
+                    </h2>
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        Yiwu Process is a leading trading company based in Yiwu City, the world's largest small commodities market. We specialize in sourcing, quality control, and exporting a wide range of products to clients across the globe.
+                    </p>
+                    <p class="text-gray-600 mb-8 leading-relaxed">
+                        Our team of experienced professionals that have not been changes since the opening of the office *2006* ensures that every product meets international quality standards. We pride ourselves on building long-term relationships with our clients through transparency, reliability, and exceptional service.
+                    </p>
+                    
+                    <div class="grid sm:grid-cols-2 gap-6">
+                        <div class="flex items-start gap-3">
+                            <div class="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                                <i data-lucide="shield-check" class="w-5 h-5 text-purple-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-900 mb-1">Quality Control</h4>
+                                <p class="text-sm text-gray-600">Rigorous inspection processes</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <div class="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                                <i data-lucide="clock" class="w-5 h-5 text-purple-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-900 mb-1">Timely Delivery</h4>
+                                <p class="text-sm text-gray-600">On-time shipping guarantee</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <div class="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                                <i data-lucide="dollar-sign" class="w-5 h-5 text-purple-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-900 mb-1">Competitive Commissions</h4>
+                                <p class="text-sm text-gray-600">As of :  3% from orders in Yiwu 
+                                    5% from the orders outside Yiwu
+                                </p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <div class="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                                <i data-lucide="headphones" class="w-5 h-5 text-purple-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-900 mb-1">24/7 Support</h4>
+                                <p class="text-sm text-gray-600">Round-the-clock assistance</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 lg:py-32 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <div class="inline-block px-4 py-2 bg-purple-100 text-purple-700 rounded-full text-sm font-semibold mb-6">
+                    Our Services
+                </div>
+                <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-6">
+                    Comprehensive Trading <span class="gradient-text">Solutions</span>
+                </h2>
+                <p class="text-gray-600 text-lg">
+                    From product sourcing to shipping, we handle every aspect of international trade to make your business expansion seamless.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Service 1 -->
+                <div class="card-hover bg-gray-50 p-8 rounded-2xl border border-gray-100">
+                    <div class="w-14 h-14 bg-purple-100 rounded-xl flex items-center justify-center mb-6">
+                        <i data-lucide="search" class="w-7 h-7 text-purple-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Product Sourcing</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Access to thousands of suppliers in Yiwu market. We find the best products at competitive prices for your business needs.
+                    </p>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="card-hover bg-gray-50 p-8 rounded-2xl border border-gray-100">
+                    <div class="w-14 h-14 bg-purple-100 rounded-xl flex items-center justify-center mb-6">
+                        <i data-lucide="check-square" class="w-7 h-7 text-purple-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Quality Inspection</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Professional quality control teams ensure every product meets your specifications and international standards.
+                    </p>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="card-hover bg-gray-50 p-8 rounded-2xl border border-gray-100">
+                    <div class="w-14 h-14 bg-purple-100 rounded-xl flex items-center justify-center mb-6">
+                        <i data-lucide="package" class="w-7 h-7 text-purple-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Custom Packaging</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Customized packaging solutions with your branding, ensuring safe delivery and professional presentation.
+                    </p>
+                </div>
+
+                <!-- Service 4 -->
+                <div class="card-hover bg-gray-50 p-8 rounded-2xl border border-gray-100">
+                    <div class="w-14 h-14 bg-purple-100 rounded-xl flex items-center justify-center mb-6">
+                        <i data-lucide="ship" class="w-7 h-7 text-purple-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Logistics & Shipping</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        End-to-end shipping solutions by sea, air, or land. We handle customs clearance and documentation.
+                    </p>
+                </div>
+
+                <!-- Service 5 -->
+                <div class="card-hover bg-gray-50 p-8 rounded-2xl border border-gray-100">
+                    <div class="w-14 h-14 bg-purple-100 rounded-xl flex items-center justify-center mb-6">
+                        <i data-lucide="file-text" class="w-7 h-7 text-purple-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Documentation</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Complete export documentation including invoices, packing lists, certificates of origin, and customs paperwork.
+                    </p>
+                </div>
+
+                <!-- Service 6 -->
+                <div class="card-hover bg-gray-50 p-8 rounded-2xl border border-gray-100">
+                    <div class="w-14 h-14 bg-purple-100 rounded-xl flex items-center justify-center mb-6">
+                        <i data-lucide="translate" class="w-7 h-7 text-purple-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Translation Services</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Professional interpretation and translation services to bridge language barriers during negotiations.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products" class="py-20 lg:py-32 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <div class="inline-block px-4 py-2 bg-purple-100 text-purple-700 rounded-full text-sm font-semibold mb-6">
+                    Our Products
+                </div>
+                <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-6">
+                    Featured <span class="gradient-text">Categories</span>
+                </h2>
+                <p class="text-gray-600 text-lg">
+                    We source and export a wide variety of products from Yiwu's vast market network.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Product 1 -->
+                <div class="group relative overflow-hidden rounded-2xl bg-white shadow-lg card-hover">
+                    <img src="http://static.photos/retail/400x300/301" alt="Home & Garden" class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110">
+                    <div class="p-6">
+                        <h3 class="text-lg font-bold text-gray-900 mb-2">Home & Garden</h3>
+                        <p class="text-gray-600 text-sm">Decor, kitchenware, and outdoor supplies</p>
+                    </div>
+                </div>
+
+                <!-- Product 2 -->
+                <div class="group relative overflow-hidden rounded-2xl bg-white shadow-lg card-hover">
+                    <img src="http://static.photos/cosmetic/400x300/302" alt="Beauty & Personal Care" class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110">
+                    <div class="p-6">
+                        <h3 class="text-lg font-bold text-gray-900 mb-2">Beauty & Care</h3>
+                        <p class="text-gray-600 text-sm">Cosmetics, skincare, and accessories</p>
+                    </div>
+                </div>
+
+                <!-- Product 3 -->
+                <div class="group relative overflow-hidden rounded-2xl bg-white shadow-lg card-hover">
+                    <img src="http://static.photos/gaming/400x300/303" alt="Electronics" class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110">
+                    <div class="p-6">
+                        <h3 class="text-lg font-bold text-gray-900 mb-2">Electronics</h3>
+                        <p class="text-gray-600 text-sm">Gadgets, accessories, and tech products</p>
+                    </div>
+                </div>
+
+                <!-- Product 4 -->
+                <div class="group relative overflow-hidden rounded-2xl bg-white shadow-lg card-hover">
+                    <img src="http://static.photos/toys/400x300/304" alt="Toys & Gifts" class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110">
+                    <div class="p-6">
+                        <h3 class="text-lg font-bold text-gray-900 mb-2">Toys & Gifts</h3>
+                        <p class="text-gray-600 text-sm">Children's toys, gifts, and seasonal items</p>
+                    </div>
+                </div>
+
+                <!-- Product 5 -->
+                <div class="group relative overflow-hidden rounded-2xl bg-white shadow-lg card-hover">
+                    <img src="http://static.photos/fashion/400x300/305" alt="Fashion Accessories" class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110">
+                    <div class="p-6">
+                        <h3 class="text-lg font-bold text-gray-900 mb-2">Fashion Accessories</h3>
+                        <p class="text-gray-600 text-sm">Jewelry, bags, watches, and apparel</p>
+                    </div>
+                </div>
+
+                <!-- Product 6 -->
+                <div class="group relative overflow-hidden rounded-2xl bg-white shadow-lg card-hover">
+                    <img src="http://static.photos/sport/400x300/306" alt="Sports & Outdoor" class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110">
+                    <div class="p-6">
+                        <h3 class="text-lg font-bold text-gray-900 mb-2">Sports & Outdoor</h3>
+                        <p class="text-gray-600 text-sm">Fitness equipment and outdoor gear</p>
+                    </div>
+                </div>
+
+                <!-- Product 7 -->
+                <div class="group relative overflow-hidden rounded-2xl bg-white shadow-lg card-hover">
+                    <img src="http://static.photos/office/400x300/307" alt="Office Supplies" class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110">
+                    <div class="p-6">
+                        <h3 class="text-lg font-bold text-gray-900 mb-2">Office Supplies</h3>
+                        <p class="text-gray-600 text-sm">Stationery, equipment, and organizers</p>
+                    </div>
+                </div>
+
+                <!-- Product 8 -->
+                <div class="group relative overflow-hidden rounded-2xl bg-white shadow-lg card-hover">
+                    <img src="http://static.photos/industry/400x300/308" alt="Hardware & Tools" class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110">
+                    <div class="p-6">
+                        <h3 class="text-lg font-bold text-gray-900 mb-2">Hardware & Tools</h3>
+                        <p class="text-gray-600 text-sm">Industrial tools and construction supplies</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 lg:py-32 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <div class="inline-block px-4 py-2 bg-purple-100 text-purple-700 rounded-full text-sm font-semibold mb-6">
+                    Contact Us
+                </div>
+                <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-6">
+                    Let's Start Your <span class="gradient-text">Business Journey</span>
+                </h2>
+                <p class="text-gray-600 text-lg">
+                    Ready to source products from China? Get in touch with us today for a free consultation.
+                </p>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-12">
+                <!-- Contact Info -->
+                <div class="space-y-8">
+                    <div class="bg-gray-50 p-8 rounded-2xl">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-6">Contact Information</h3>
+                        
+                        <div class="space-y-6">
+                            <!-- Phone -->
+                            <a href="tel:8613270858500" class="flex items-start gap-4 group">
+                                <div class="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:bg-purple-600 transition-colors">
+                                    <i data-lucide="phone" class="w-6 h-6 text-purple-600 group-hover:text-white transition-colors"></i>
+                                </div>
+                                <div>
+                                    <p class="text-sm text-gray-500 mb-1">Phone</p>
+                                    <p class="text-lg font-semibold text-gray-900">86 13270858500</p>
+                                </div>
+                            </a>
+
+                            <!-- WhatsApp -->
+                            <a href="https://wa.me/008613270858500" target="_blank" class="flex items-start gap-4 group">
+                                <div class="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:bg-green-600 transition-colors">
+                                    <i data-lucide="message-circle" class="w-6 h-6 text-green-600 group-hover:text-white transition-colors"></i>
+                                </div>
+                                <div>
+                                    <p class="text-sm text-gray-500 mb-1">WhatsApp</p>
+                                    <p class="text-lg font-semibold text-gray-900">008613270858500</p>
+                                </div>
+                            </a>
+
+                            <!-- Email -->
+                            <a href="mailto:mmtseha@gmail.com" class="flex items-start gap-4 group">
+                                <div class="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:bg-purple-600 transition-colors">
+                                    <i data-lucide="mail" class="w-6 h-6 text-purple-600 group-hover:text-white transition-colors"></i>
+                                </div>
+                                <div>
+                                    <p class="text-sm text-gray-500 mb-1">Email</p>
+                                    <p class="text-lg font-semibold text-gray-900">mmtseha@gmail.com</p>
+                                </div>
+                            </a>
+
+                            <!-- WeChat -->
+                            <div class="flex items-start gap-4 group">
+                                <div class="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                                    <i data-lucide="smartphone" class="w-6 h-6 text-green-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-sm text-gray-500 mb-1">WeChat</p>
+                                    <p class="text-lg font-semibold text-gray-900">13270858500</p>
+                                </div>
+                            </div>
+
+                            <!-- Address -->
+                            <a href="https://www.google.com/maps/search/?api=1&query=浙江省义乌市稠州北路699号金茂大厦2109室" target="_blank" class="flex items-start gap-4 group">
+                                <div class="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:bg-purple-600 transition-colors">
+                                    <i data-lucide="map-pin" class="w-6 h-6 text-purple-600 group-hover:text-white transition-colors"></i>
+                                </div>
+                                <div>
+                                    <p class="text-sm text-gray-500 mb-1">Address (Click to view map)</p>
+                                    <p class="text-lg font-semibold text-gray-900 group-hover:text-purple-600 transition-colors">浙江省义乌市稠州北路699号金茂大厦2109室</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Social Media -->
+                    <div class="bg-gray-50 p-8 rounded-2xl">
+                        <h3 class="text-xl font-bold text-gray-900 mb-6">Follow Us</h3>
+                        <div class="flex gap-4">
+                            <a href="https://www.facebook.com/share/19tXrD4UZ4/?mibextid=wwXIfr" target="_blank" class="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center text-white hover:bg-blue-700 transition shadow-lg hover:shadow-xl">
+                                <i data-lucide="facebook" class="w-6 h-6"></i>
+                            </a>
+                            <a href="https://www.instagram.com/_y.1_" target="_blank" class="w-12 h-12 bg-gradient-to-br from-purple-600 via-pink-500 to-orange-400 rounded-full flex items-center justify-center text-white hover:scale-110 transition shadow-lg hover:shadow-xl">
+                                <i data-lucide="instagram" class="w-6 h-6"></i>
+                            </a>
+                            <a href="https://wa.me/008613270858500" target="_blank" class="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center text-white hover:bg-green-600 transition shadow-lg hover:shadow-xl">
+                                <i data-lucide="message-circle" class="w-6 h-6"></i>
+                            </a>
+                            <a href="mailto:mmtseha@gmail.com" class="w-12 h-12 bg-gray-800 rounded-full flex items-center justify-center text-white hover:bg-gray-900 transition shadow-lg hover:shadow-xl">
+                                <i data-lucide="mail" class="w-6 h-6"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <div class="bg-gray-50 p-8 rounded-2xl">
+                    <h3 class="text-2xl font-bold text-gray-900 mb-6">Send us a Message</h3>
+                    <form id="contact-form" class="space-y-6">
+                        <div class="grid sm:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">First Name</label>
+                                <input type="text" class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-purple-500 focus:ring-2 focus:ring-purple-200 outline-none transition" placeholder="John" required>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Last Name</label>
+                                <input type="text" class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-purple-500 focus:ring-2 focus:ring-purple-200 outline-none transition" placeholder="Doe" required>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Email Address</label>
+                            <input type="email" class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-purple-500 focus:ring-2 focus:ring-purple-200 outline-none transition" placeholder="john@example.com" required>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Phone Number</label>
+                            <input type="tel" class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-purple-500 focus:ring-2 focus:ring-purple-200 outline-none transition" placeholder="+1 234 567 890">
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Message</label>
+                            <textarea rows="4" class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-purple-500 focus:ring-2 focus:ring-purple-200 outline-none transition" placeholder="Tell us about your sourcing needs..." required></textarea>
+                        </div>
+
+                        <button type="submit" class="w-full py-4 bg-purple-600 text-white rounded-xl font-semibold hover:bg-purple-700 transition shadow-lg hover:shadow-xl flex items-center justify-center gap-2">
+                            <span>Send Message</span>
+                            <i data-lucide="send" class="w-5 h-5"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+                <!-- Company Info -->
+                <div class="lg:col-span-2">
+                    <div class="flex items-center gap-2 mb-6">
+                        <i data-lucide="globe" class="w-8 h-8 text-purple-400"></i>
+                        <span class="text-2xl font-bold">Yiwu Process Trading</span>
+                    </div>
+                    <p class="text-gray-400 mb-6 max-w-md">
+                        Your trusted partner for international trade. Based in Yiwu, China, we connect global businesses with quality products and reliable services.
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="https://www.facebook.com/share/19tXrD4UZ4/?mibextid=wwXIfr" target="_blank" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-blue-600 transition">
+                            <i data-lucide="facebook" class="w-5 h-5"></i>
+                        </a>
+                        <a href="https://www.instagram.com/_y.1_" target="_blank" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-pink-600 transition">
+                            <i data-lucide="instagram" class="w-5 h-5"></i>
+                        </a>
+                        <a href="https://wa.me/008613270858500" target="_blank" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-green-500 transition">
+                            <i data-lucide="message-circle" class="w-5 h-5"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="text-lg font-semibold mb-6">Quick Links</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#home" class="text-gray-400 hover:text-white transition">Home</a></li>
+                        <li><a href="#about" class="text-gray-400 hover:text-white transition">About Us</a></li>
+                        <li><a href="#services" class="text-gray-400 hover:text-white transition">Services</a></li>
+                        <li><a href="#products" class="text-gray-400 hover:text-white transition">Products</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-white transition">Contact</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Info -->
+                <div>
+                    <h4 class="text-lg font-semibold mb-6">Contact</h4>
+                    <ul class="space-y-3 text-gray-400">
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="map-pin" class="w-5 h-5 mt-0.5 flex-shrink-0"></i>
+                            <a href="https://www.google.com/maps/search/?api=1&query=浙江省义乌市稠州北路699号金茂大厦2109室" target="_blank" class="hover:text-white transition">
+                                浙江省义乌市稠州北路699号金茂大厦2109室
+                            </a>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i data-lucide="phone" class="w-5 h-5 flex-shrink-0"></i>
+                            <a href="tel:8613270858500" class="hover:text-white transition">86 13270858500</a>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i data-lucide="mail" class="w-5 h-5 flex-shrink-0"></i>
+                            <a href="mailto:mmtseha@gmail.com" class="hover:text-white transition">mmtseha@gmail.com</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-gray-500 text-sm">
+                    © 2024 Yiwu Process Trading. All rights reserved.
+                </p>
+                <div class="flex items-center gap-2 text-gray-500 text-sm">
+                    <span>Made with</span>
+                    <i data-lucide="heart" class="w-4 h-4 text-red-500 fill-current"></i>
+                    <span>in Yiwu, China</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const closeMenuBtn = document.getElementById('close-menu');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const overlay = document.getElementById('overlay');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        function toggleMenu() {
+            mobileMenu.classList.toggle('active');
+            overlay.classList.toggle('active');
+            document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+        }
+
+        mobileMenuBtn.addEventListener('click', toggleMenu);
+        closeMenuBtn.addEventListener('click', toggleMenu);
+        overlay.addEventListener('click', toggleMenu);
+        
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', toggleMenu);
+        });
+
+        // Navbar Scroll Effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('nav-scrolled');
+            } else {
+                navbar.classList.remove('nav-scrolled');
+            }
+        });
+
+        // Smooth Scroll for Anchor Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Contact Form Handler
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Show success message
+            const btn = this.querySelector('button[type="submit"]');
+            const originalContent = btn.innerHTML;
+            
+            btn.innerHTML = '<span>Message Sent!</span> <i data-lucide="check" class="w-5 h-5"></i>';
+            btn.classList.remove('bg-purple-600', 'hover:bg-purple-700');
+            btn.classList.add('bg-green-600', 'hover:bg-green-700');
+            lucide.createIcons();
+            
+            setTimeout(() => {
+                this.reset();
+                btn.innerHTML = originalContent;
+                btn.classList.add('bg-purple-600', 'hover:bg-purple-700');
+                btn.classList.remove('bg-green-600', 'hover:bg-green-700');
+                lucide.createIcons();
+            }, 3000);
+        });
+
+        // Intersection Observer for Animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements
+        document.querySelectorAll('.card-hover').forEach((el, index) => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = `all 0.6s ease ${index * 0.1}s`;
+            observer.observe(el);
+        });
+    </script>
+<script src="https://deepsite.hf.co/deepsite-badge.js"></script>
+</body>
+</html>
