@@ -41,7 +41,7 @@
             box-shadow: 0 2px 20px rgba(0,0,0,0.1);
         }
         .mobile-menu {
-            transform: translateX(100%); /* RTL: start from right */
+            transform: translateX(100%);
             transition: transform 0.3s ease-in-out;
         }
         .mobile-menu.active {
@@ -72,13 +72,13 @@
                     </a>
                 </div>
 
-                <!-- Desktop Menu (with language switcher) -->
+                <!-- Desktop Menu -->
                 <div class="hidden md:flex items-center space-x-8 space-x-reverse">
                     <a href="#home" class="text-gray-700 hover:text-purple-600 font-medium transition">الرئيسية</a>
                     <a href="#about" class="text-gray-700 hover:text-purple-600 font-medium transition">من نحن</a>
                     <a href="#services" class="text-gray-700 hover:text-purple-600 font-medium transition">خدماتنا</a>
                     <a href="#products" class="text-gray-700 hover:text-purple-600 font-medium transition">المنتجات</a>
-                    <!-- Language Switcher Button -->
+                    <!-- Language Switcher (Desktop) -->
                     <a href="index.html" class="flex items-center gap-1 px-3 py-2 border border-gray-300 rounded-full text-gray-700 hover:bg-purple-50 hover:border-purple-300 transition">
                         <i data-lucide="globe" class="w-4 h-4"></i>
                         <span>English</span>
@@ -98,7 +98,7 @@
         <!-- Mobile Menu Overlay -->
         <div id="overlay" class="overlay fixed inset-0 bg-black/50 z-40 md:hidden"></div>
 
-        <!-- Mobile Menu (with language switcher) -->
+        <!-- Mobile Menu -->
         <div id="mobile-menu" class="mobile-menu fixed top-0 right-0 w-80 h-full bg-white z-50 shadow-2xl md:hidden">
             <div class="p-6">
                 <div class="flex justify-between items-center mb-8">
@@ -112,7 +112,7 @@
                     <a href="#about" class="text-gray-700 hover:text-purple-600 font-medium text-lg py-2 border-b border-gray-100 mobile-link">من نحن</a>
                     <a href="#services" class="text-gray-700 hover:text-purple-600 font-medium text-lg py-2 border-b border-gray-100 mobile-link">خدماتنا</a>
                     <a href="#products" class="text-gray-700 hover:text-purple-600 font-medium text-lg py-2 border-b border-gray-100 mobile-link">المنتجات</a>
-                    <!-- Language Switcher for Mobile -->
+                    <!-- Language Switcher inside mobile menu -->
                     <a href="index.html" class="flex items-center gap-2 text-gray-700 hover:text-purple-600 font-medium text-lg py-2 border-b border-gray-100">
                         <i data-lucide="globe" class="w-5 h-5"></i>
                         <span>English</span>
@@ -125,6 +125,14 @@
 
     <!-- Hero Section -->
     <section id="home" class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
+        <!-- Mobile Language Switcher (visible only on mobile, outside menu) -->
+        <div class="block md:hidden absolute top-4 left-4 z-20">
+            <a href="index.html" class="flex items-center gap-1 px-3 py-2 bg-white border border-gray-300 rounded-full text-sm font-medium text-gray-700 shadow-md hover:bg-purple-50 transition">
+                <i data-lucide="globe" class="w-4 h-4"></i>
+                <span>English</span>
+            </a>
+        </div>
+
         <div class="absolute inset-0 hero-gradient opacity-10"></div>
         <div class="absolute inset-0 bg-[url('http://static.photos/technology/1920x1080/1')] bg-cover bg-center opacity-5"></div>
         
@@ -170,7 +178,7 @@
                     <div class="absolute inset-0 hero-gradient rounded-3xl transform rotate-3 opacity-20"></div>
                     <img src="http://static.photos/office/800x600/42" alt="مكتب ييوو التجاري" class="relative rounded-3xl shadow-2xl w-full object-cover h-[400px] lg:h-[500px]">
                     
-                    <!-- Floating Card - adjusted position for RTL -->
+                    <!-- Floating Card -->
                     <div class="absolute -bottom-6 -right-6 bg-white p-6 rounded-2xl shadow-xl max-w-xs hidden lg:block">
                         <div class="flex items-center gap-4 mb-3">
                             <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center">
@@ -671,7 +679,7 @@
         </div>
     </footer>
 
-    <!-- JavaScript (unchanged functionality) -->
+    <!-- JavaScript -->
     <script>
         // Initialize Lucide Icons
         lucide.createIcons();
