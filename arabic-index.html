@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ييوو بروسيس للتجارة - شريكك التجاري الموثوق</title>
+    <meta name="description" content="ييوو بروسيس للتجارة - خدمات تجارة دولية احترافية في ييوو، الصين. منتجات عالية الجودة، خدمة موثوقة، وصول عالمي.">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- Google Fonts - Arabic Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'Tajawal', sans-serif;
+            scroll-behavior: smooth;
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .hero-gradient {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        .nav-scrolled {
+            background: white;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        }
+        .mobile-menu {
+            transform: translateX(100%); /* RTL: start from right */
+            transition: transform 0.3s ease-in-out;
+        }
+        .mobile-menu.active {
+            transform: translateX(0);
+        }
+        .overlay {
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease-in-out;
+        }
+        .overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 bg-white/90 backdrop-blur-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <a href="#" class="text-2xl font-bold gradient-text flex items-center gap-2">
+                        <i data-lucide="globe" class="w-8 h-8"></i>
+                        <span>ييوو بروسيس للتجارة</span>
+                    </a>
+                </div>
+
+                <!-- Desktop Menu (with language switcher) -->
+                <div class="hidden md:flex items-center space-x-8 space-x-reverse">
+                    <a href="#home" class="text-gray-700 hover:text-purple-600 font-medium transition">الرئيسية</a>
+                    <a href="#about" class="text-gray-700 hover:text-purple-600 font-medium transition">من نحن</a>
+                    <a href="#services" class="text-gray-700 hover:text-purple-600 font-medium transition">خدماتنا</a>
+                    <a href="#products" class="text-gray-700 hover:text-purple-600 font-medium transition">المنتجات</a>
+                    <!-- Language Switcher Button -->
+                    <a href="index.html" class="flex items-center gap-1 px-3 py-2 border border-gray-300 rounded-full text-gray-700 hover:bg-purple-50 hover:border-purple-300 transition">
+                        <i data-lucide="globe" class="w-4 h-4"></i>
+                        <span>English</span>
+                    </a>
+                    <a href="#contact" class="px-6 py-2.5 bg-purple-600 text-white rounded-full font-medium hover:bg-purple-700 transition shadow-lg hover:shadow-xl">اتصل بنا</a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="text-gray-700 hover:text-purple-600 focus:outline-none">
+                        <i data-lucide="menu" class="w-6 h-6"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Overlay -->
+        <div id="overlay" class="overlay fixed inset-0 bg-black/50 z-40 md:hidden"></div>
+
+        <!-- Mobile Menu (with language switcher) -->
+        <div id="mobile-menu" class="mobile-menu fixed top-0 right-0 w-80 h-full bg-white z-50 shadow-2xl md:hidden">
+            <div class="p-6">
+                <div class="flex justify-between items-center mb-8">
+                    <span class="text-xl font-bold gradient-text">القائمة</span>
+                    <button id="close-menu" class="text-gray-500 hover:text-purple-600">
+                        <i data-lucide="x" class="w-6 h-6"></i>
+                    </button>
+                </div>
+                <div class="flex flex-col space-y-4">
+                    <a href="#home" class="text-gray-700 hover:text-purple-600 font-medium text-lg py-2 border-b border-gray-100 mobile-link">الرئيسية</a>
+                    <a href="#about" class="text-gray-700 hover:text-purple-600 font-medium text-lg py-2 border-b border-gray-100 mobile-link">من نحن</a>
+                    <a href="#services" class="text-gray-700 hover:text-purple-600 font-medium text-lg py-2 border-b border-gray-100 mobile-link">خدماتنا</a>
+                    <a href="#products" class="text-gray-700 hover:text-purple-600 font-medium text-lg py-2 border-b border-gray-100 mobile-link">المنتجات</a>
+                    <!-- Language Switcher for Mobile -->
+                    <a href="index.html" class="flex items-center gap-2 text-gray-700 hover:text-purple-600 font-medium text-lg py-2 border-b border-gray-100">
+                        <i data-lucide="globe" class="w-5 h-5"></i>
+                        <span>English</span>
+                    </a>
+                    <a href="#contact" class="text-gray-700 hover:text-purple-600 font-medium text-lg py-2 border-b border-gray-100 mobile-link">اتصل بنا</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
+        <div class="absolute inset-0 hero-gradient opacity-10"></div>
+        <div class="absolute inset-0 bg-[url('http://static.photos/technology/1920x1080/1')] bg-cover bg-center opacity-5"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="text-center lg:text-right">
+                    <div class="inline-block px-4 py-2 bg-purple-100 text-purple-700 rounded-full text-sm font-semibold mb-6">
+                        🌍 حلول تجارية عالمية
+                    </div>
+                    <h1 class="text-4xl lg:text-6xl font-bold leading-tight mb-6 text-gray-900">
+                        شريكك الموثوق في <span class="gradient-text">الصين</span><br>منذ 2006
+                    </h1>
+                    <p class="text-lg text-gray-600 mb-8 leading-relaxed">
+                        مقرنا في قلب مدينة ييوو الدولية للتجارة منذ 2006، نربط الشركات في جميع أنحاء العالم بمنتجات عالية الجودة وخدمات تجارية موثوقة.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                        <a href="#contact" class="px-8 py-4 bg-purple-600 text-white rounded-full font-semibold hover:bg-purple-700 transition shadow-lg hover:shadow-xl flex items-center justify-center gap-2">
+                            <span>تواصل معنا</span>
+                            <i data-lucide="arrow-left" class="w-5 h-5"></i>
+                        </a>
+                        <a href="#services" class="px-8 py-4 bg-white text-purple-600 border-2 border-purple-600 rounded-full font-semibold hover:bg-purple-50 transition flex items-center justify-center">
+                            خدماتنا
+                        </a>
+                    </div>
+                    
+                    <div class="mt-8 flex items-center justify-center lg:justify-start gap-6 text-sm text-gray-500">
+                        <div class="flex items-center gap-2">
+                            <i data-lucide="check-circle" class="w-5 h-5 text-green-500"></i>
+                            <span>جودة مضمونة</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <i data-lucide="check-circle" class="w-5 h-5 text-green-500"></i>
+                            <span>شحن سريع</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <i data-lucide="check-circle" class="w-5 h-5 text-green-500"></i>
+                            <span>دعم 24/7</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="relative">
+                    <div class="absolute inset-0 hero-gradient rounded-3xl transform rotate-3 opacity-20"></div>
+                    <img src="http://static.photos/office/800x600/42" alt="مكتب ييوو التجاري" class="relative rounded-3xl shadow-2xl w-full object-cover h-[400px] lg:h-[500px]">
+                    
+                    <!-- Floating Card - adjusted position for RTL -->
+                    <div class="absolute -bottom-6 -right-6 bg-white p-6 rounded-2xl shadow-xl max-w-xs hidden lg:block">
+                        <div class="flex items-center gap-4 mb-3">
+                            <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center">
+                                <i data-lucide="trending-up" class="w-6 h-6 text-purple-600"></i>
+                            </div>
+                            <div>
+                                <p class="text-sm text-gray-500">حجم التصدير</p>
+                                <p class="text-xl font-bold text-gray-900">+50 دولة</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="py-12 bg-white border-y border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                <div>
+                    <p class="text-3xl lg:text-4xl font-bold text-purple-600 mb-2">20+</p>
+                    <p class="text-gray-600 font-medium">سنوات خبرة</p>
+                </div>
+                <div>
+                    <p class="text-3xl lg:text-4xl font-bold text-purple-600 mb-2">آلاف+</p>
+                    <p class="text-gray-600 font-medium">منتج تم توريده</p>
+                </div>
+                <div>
+                    <p class="text-3xl lg:text-4xl font-bold text-purple-600 mb-2">30+</p>
+                    <p class="text-gray-600 font-medium">دولة نخدمها</p>
+                </div>
+                <div>
+                    <p class="text-3xl lg:text-4xl font-bold text-purple-600 mb-2">جميع</p>
+                    <p class="text-gray-600 font-medium">عملائنا راضون</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 lg:py-32 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div class="order-2 lg:order-1 relative">
+                    <div class="grid grid-cols-2 gap-4">
+                        <img src="http://static.photos/workspace/400x500/101" alt="مساحة عمل" class="rounded-2xl shadow-lg w-full h-64 object-cover mt-8">
+                        <img src="http://static.photos/industry/400x500/202" alt="تصنيع" class="rounded-2xl shadow-lg w-full h-64 object-cover">
+                    </div>
+                    <div class="absolute -z-10 -bottom-4 -left-4 w-full h-full bg-purple-200 rounded-2xl"></div>
+                </div>
+                
+                <div class="order-1 lg:order-2">
+                    <div class="inline-block px-4 py-2 bg-purple-100 text-purple-700 rounded-full text-sm font-semibold mb-6">
+                        من نحن
+                    </div>
+                    <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-6">
+                        ربط الأسواق العالمية بـ <span class="gradient-text">منتجات عالية الجودة</span>
+                    </h2>
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        ييوو بروسيس هي شركة تجارية رائدة مقرها في مدينة ييوو، أكبر سوق للسلع الصغيرة في العالم. نحن متخصصون في التوريد ومراقبة الجودة وتصدير مجموعة واسعة من المنتجات إلى العملاء في جميع أنحاء العالم.
+                    </p>
+                    <p class="text-gray-600 mb-8 leading-relaxed">
+                        يضمن فريقنا من المحترفين ذوي الخبرة الذين لم يتغيروا منذ افتتاح المكتب في عام 2006 أن كل منتج يلبي معايير الجودة الدولية. نحن نفخر ببناء علاقات طويلة الأمد مع عملائنا من خلال الشفافية والموثوقية والخدمة الاستثنائية.
+                    </p>
+                    
+                    <div class="grid sm:grid-cols-2 gap-6">
+                        <div class="flex items-start gap-3">
+                            <div class="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                                <i data-lucide="shield-check" class="w-5 h-5 text-purple-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-900 mb-1">مراقبة الجودة</h4>
+                                <p class="text-sm text-gray-600">عمليات فحص صارمة</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <div class="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                                <i data-lucide="clock" class="w-5 h-5 text-purple-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-900 mb-1">تسليم في الوقت المحدد</h4>
+                                <p class="text-sm text-gray-600">ضمان الشحن في الوقت المحدد</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <div class="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                                <i data-lucide="dollar-sign" class="w-5 h-5 text-purple-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-900 mb-1">عمولات تنافسية</h4>
+                                <p class="text-sm text-gray-600">3% للطلبات في ييوو، 5% للطلبات خارج ييوو</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <div class="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                                <i data-lucide="headphones" class="w-5 h-5 text-purple-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-900 mb-1">دعم 24/7</h4>
+                                <p class="text-sm text-gray-600">مساعدة على مدار الساعة</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 lg:py-32 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <div class="inline-block px-4 py-2 bg-purple-100 text-purple-700 rounded-full text-sm font-semibold mb-6">
+                    خدماتنا
+                </div>
+                <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-6">
+                    حلول تجارية <span class="gradient-text">شاملة</span>
+                </h2>
+                <p class="text-gray-600 text-lg">
+                    من توريد المنتجات إلى الشحن، نتعامل مع كل جانب من جوانب التجارة الدولية لجعل توسع أعمالك سلساً.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Service 1 -->
+                <div class="card-hover bg-gray-50 p-8 rounded-2xl border border-gray-100">
+                    <div class="w-14 h-14 bg-purple-100 rounded-xl flex items-center justify-center mb-6">
+                        <i data-lucide="search" class="w-7 h-7 text-purple-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">توريد المنتجات</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        الوصول إلى آلاف الموردين في سوق ييوو. نجد أفضل المنتجات بأسعار تنافسية لاحتياجات عملك.
+                    </p>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="card-hover bg-gray-50 p-8 rounded-2xl border border-gray-100">
+                    <div class="w-14 h-14 bg-purple-100 rounded-xl flex items-center justify-center mb-6">
+                        <i data-lucide="check-square" class="w-7 h-7 text-purple-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">فحص الجودة</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        فرق مراقبة جودة محترفة تضمن أن كل منتج يلبي مواصفاتك والمعايير الدولية.
+                    </p>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="card-hover bg-gray-50 p-8 rounded-2xl border border-gray-100">
+                    <div class="w-14 h-14 bg-purple-100 rounded-xl flex items-center justify-center mb-6">
+                        <i data-lucide="package" class="w-7 h-7 text-purple-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">تغليف مخصص</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        حلول تغليف مخصصة بعلامتك التجارية، تضمان التسليم الآمن والعرض الاحترافي.
+                    </p>
+                </div>
+
+                <!-- Service 4 -->
+                <div class="card-hover bg-gray-50 p-8 rounded-2xl border border-gray-100">
+                    <div class="w-14 h-14 bg-purple-100 rounded-xl flex items-center justify-center mb-6">
+                        <i data-lucide="ship" class="w-7 h-7 text-purple-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">الخدمات اللوجستية والشحن</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        حلول شحن شاملة بحراً أو جواً أو براً. نتولى التخليص الجمركي والوثائق.
+                    </p>
+                </div>
+
+                <!-- Service 5 -->
+                <div class="card-hover bg-gray-50 p-8 rounded-2xl border border-gray-100">
+                    <div class="w-14 h-14 bg-purple-100 rounded-xl flex items-center justify-center mb-6">
+                        <i data-lucide="file-text" class="w-7 h-7 text-purple-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">الوثائق</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        وثائق تصدير كاملة تشمل الفواتير وقوائم التعبئة وشهادات المنشأ والأوراق الجمركية.
+                    </p>
+                </div>
+
+                <!-- Service 6 -->
+                <div class="card-hover bg-gray-50 p-8 rounded-2xl border border-gray-100">
+                    <div class="w-14 h-14 bg-purple-100 rounded-xl flex items-center justify-center mb-6">
+                        <i data-lucide="translate" class="w-7 h-7 text-purple-600"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">خدمات الترجمة</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        خدمات ترجمة فورية وتحريرية احترافية لجسر حواجز اللغة أثناء المفاوضات.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products" class="py-20 lg:py-32 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <div class="inline-block px-4 py-2 bg-purple-100 text-purple-700 rounded-full text-sm font-semibold mb-6">
+                    منتجاتنا
+                </div>
+                <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-6">
+                    فئات <span class="gradient-text">مميزة</span>
+                </h2>
+                <p class="text-gray-600 text-lg">
+                    نقوم بتوريد وتصدير مجموعة واسعة من المنتجات من شبكة سوق ييوو الواسعة.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Product 1 -->
+                <div class="group relative overflow-hidden rounded-2xl bg-white shadow-lg card-hover">
+                    <img src="http://static.photos/retail/400x300/301" alt="المنزل والحديقة" class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110">
+                    <div class="p-6">
+                        <h3 class="text-lg font-bold text-gray-900 mb-2">المنزل والحديقة</h3>
+                        <p class="text-gray-600 text-sm">ديكور، أدوات مطبخ، مستلزمات خارجية</p>
+                    </div>
+                </div>
+
+                <!-- Product 2 -->
+                <div class="group relative overflow-hidden rounded-2xl bg-white shadow-lg card-hover">
+                    <img src="http://static.photos/cosmetic/400x300/302" alt="الجمال والعناية الشخصية" class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110">
+                    <div class="p-6">
+                        <h3 class="text-lg font-bold text-gray-900 mb-2">الجمال والعناية</h3>
+                        <p class="text-gray-600 text-sm">مستحضرات تجميل، عناية بالبشرة، إكسسوارات</p>
+                    </div>
+                </div>
+
+                <!-- Product 3 -->
+                <div class="group relative overflow-hidden rounded-2xl bg-white shadow-lg card-hover">
+                    <img src="http://static.photos/gaming/400x300/303" alt="إلكترونيات" class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110">
+                    <div class="p-6">
+                        <h3 class="text-lg font-bold text-gray-900 mb-2">إلكترونيات</h3>
+                        <p class="text-gray-600 text-sm">أجهزة، إكسسوارات، منتجات تقنية</p>
+                    </div>
+                </div>
+
+                <!-- Product 4 -->
+                <div class="group relative overflow-hidden rounded-2xl bg-white shadow-lg card-hover">
+                    <img src="http://static.photos/toys/400x300/304" alt="ألعاب وهدايا" class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110">
+                    <div class="p-6">
+                        <h3 class="text-lg font-bold text-gray-900 mb-2">ألعاب وهدايا</h3>
+                        <p class="text-gray-600 text-sm">ألعاب أطفال، هدايا، منتجات موسمية</p>
+                    </div>
+                </div>
+
+                <!-- Product 5 -->
+                <div class="group relative overflow-hidden rounded-2xl bg-white shadow-lg card-hover">
+                    <img src="http://static.photos/fashion/400x300/305" alt="إكسسوارات الموضة" class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110">
+                    <div class="p-6">
+                        <h3 class="text-lg font-bold text-gray-900 mb-2">إكسسوارات الموضة</h3>
+                        <p class="text-gray-600 text-sm">مجوهرات، حقائب، ساعات، ملابس</p>
+                    </div>
+                </div>
+
+                <!-- Product 6 -->
+                <div class="group relative overflow-hidden rounded-2xl bg-white shadow-lg card-hover">
+                    <img src="http://static.photos/sport/400x300/306" alt="رياضة وخارجيات" class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110">
+                    <div class="p-6">
+                        <h3 class="text-lg font-bold text-gray-900 mb-2">رياضة وخارجيات</h3>
+                        <p class="text-gray-600 text-sm">معدات لياقة، أدوات خارجية</p>
+                    </div>
+                </div>
+
+                <!-- Product 7 -->
+                <div class="group relative overflow-hidden rounded-2xl bg-white shadow-lg card-hover">
+                    <img src="http://static.photos/office/400x300/307" alt="لوازم مكتبية" class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110">
+                    <div class="p-6">
+                        <h3 class="text-lg font-bold text-gray-900 mb-2">لوازم مكتبية</h3>
+                        <p class="text-gray-600 text-sm">قرطاسية، معدات، منظمات</p>
+                    </div>
+                </div>
+
+                <!-- Product 8 -->
+                <div class="group relative overflow-hidden rounded-2xl bg-white shadow-lg card-hover">
+                    <img src="http://static.photos/industry/400x300/308" alt="عدد وأدوات" class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110">
+                    <div class="p-6">
+                        <h3 class="text-lg font-bold text-gray-900 mb-2">عدد وأدوات</h3>
+                        <p class="text-gray-600 text-sm">أدوات صناعية، مستلزمات بناء</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 lg:py-32 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <div class="inline-block px-4 py-2 bg-purple-100 text-purple-700 rounded-full text-sm font-semibold mb-6">
+                    اتصل بنا
+                </div>
+                <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-6">
+                    لنبدأ <span class="gradient-text">رحلة أعمالك</span>
+                </h2>
+                <p class="text-gray-600 text-lg">
+                    مستعد لتوريد المنتجات من الصين؟ تواصل معنا اليوم للحصول على استشارة مجانية.
+                </p>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-12">
+                <!-- Contact Info -->
+                <div class="space-y-8">
+                    <div class="bg-gray-50 p-8 rounded-2xl">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-6">معلومات الاتصال</h3>
+                        
+                        <div class="space-y-6">
+                            <!-- Phone -->
+                            <a href="tel:8613270858500" class="flex items-start gap-4 group">
+                                <div class="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:bg-purple-600 transition-colors">
+                                    <i data-lucide="phone" class="w-6 h-6 text-purple-600 group-hover:text-white transition-colors"></i>
+                                </div>
+                                <div>
+                                    <p class="text-sm text-gray-500 mb-1">هاتف</p>
+                                    <p class="text-lg font-semibold text-gray-900">+8613270858500</p>
+                                    <p class="text-lg font-semibold text-gray-900">+8613967969394</p>
+                                </div>
+                            </a>
+
+                            <!-- WhatsApp -->
+                            <a href="https://wa.me/008613270858500" target="_blank" class="flex items-start gap-4 group">
+                                <div class="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:bg-green-600 transition-colors">
+                                    <i data-lucide="message-circle" class="w-6 h-6 text-green-600 group-hover:text-white transition-colors"></i>
+                                </div>
+                                <div>
+                                    <p class="text-sm text-gray-500 mb-1">واتساب</p>
+                                    <p class="text-lg font-semibold text-gray-900">+8613270858500</p>
+                                    <p class="text-lg font-semibold text-gray-900">+8613967969394</p>
+                                </div>
+                            </a>
+
+                            <!-- Email -->
+                            <a href="mailto:mmtseha@gmail.com" class="flex items-start gap-4 group">
+                                <div class="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:bg-purple-600 transition-colors">
+                                    <i data-lucide="mail" class="w-6 h-6 text-purple-600 group-hover:text-white transition-colors"></i>
+                                </div>
+                                <div>
+                                    <p class="text-sm text-gray-500 mb-1">البريد الإلكتروني</p>
+                                    <p class="text-lg font-semibold text-gray-900">mmtseha@gmail.com</p>
+                                </div>
+                            </a>
+
+                            <!-- WeChat -->
+                            <div class="flex items-start gap-4 group">
+                                <div class="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                                    <i data-lucide="smartphone" class="w-6 h-6 text-green-600"></i>
+                                </div>
+                                <div>
+                                    <p class="text-sm text-gray-500 mb-1">وي تشات</p>
+                                    <p class="text-lg font-semibold text-gray-900">13270858500</p>
+                                    <p class="text-lg font-semibold text-gray-900">13967969394</p>
+                                </div>
+                            </div>
+
+                            <!-- Address -->
+                            <a href="https://www.google.com/maps/search/?api=1&query=浙江省义乌市稠州北路699号金茂大厦2109室" target="_blank" class="flex items-start gap-4 group">
+                                <div class="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:bg-purple-600 transition-colors">
+                                    <i data-lucide="map-pin" class="w-6 h-6 text-purple-600 group-hover:text-white transition-colors"></i>
+                                </div>
+                                <div>
+                                    <p class="text-sm text-gray-500 mb-1">العنوان (انقر لعرض الخريطة)</p>
+                                    <p class="text-lg font-semibold text-gray-900 group-hover:text-purple-600 transition-colors">浙江省义乌市稠州北路699号金茂大厦2109室</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Social Media -->
+                    <div class="bg-gray-50 p-8 rounded-2xl">
+                        <h3 class="text-xl font-bold text-gray-900 mb-6">تابعنا</h3>
+                        <div class="flex gap-4">
+                            <a href="https://www.facebook.com/share/19tXrD4UZ4/?mibextid=wwXIfr" target="_blank" class="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center text-white hover:bg-blue-700 transition shadow-lg hover:shadow-xl">
+                                <i data-lucide="facebook" class="w-6 h-6"></i>
+                            </a>
+                            <a href="https://www.instagram.com/_y.1_" target="_blank" class="w-12 h-12 bg-gradient-to-br from-purple-600 via-pink-500 to-orange-400 rounded-full flex items-center justify-center text-white hover:scale-110 transition shadow-lg hover:shadow-xl">
+                                <i data-lucide="instagram" class="w-6 h-6"></i>
+                            </a>
+                            <a href="https://wa.me/008613270858500" target="_blank" class="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center text-white hover:bg-green-600 transition shadow-lg hover:shadow-xl">
+                                <i data-lucide="message-circle" class="w-6 h-6"></i>
+                            </a>
+                            <a href="mailto:mmtseha@gmail.com" class="w-12 h-12 bg-gray-800 rounded-full flex items-center justify-center text-white hover:bg-gray-900 transition shadow-lg hover:shadow-xl">
+                                <i data-lucide="mail" class="w-6 h-6"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <div class="bg-gray-50 p-8 rounded-2xl">
+                    <h3 class="text-2xl font-bold text-gray-900 mb-6">أرسل لنا رسالة</h3>
+                    <form id="contact-form" class="space-y-6">
+                        <div class="grid sm:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">الاسم الأول</label>
+                                <input type="text" class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-purple-500 focus:ring-2 focus:ring-purple-200 outline-none transition" placeholder="الاسم الأول" required>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">اسم العائلة</label>
+                                <input type="text" class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-purple-500 focus:ring-2 focus:ring-purple-200 outline-none transition" placeholder="العائلة" required>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">البريد الإلكتروني</label>
+                            <input type="email" class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-purple-500 focus:ring-2 focus:ring-purple-200 outline-none transition" placeholder="example@domain.com" required>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">رقم الهاتف</label>
+                            <input type="tel" class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-purple-500 focus:ring-2 focus:ring-purple-200 outline-none transition" placeholder="+1 234 567 890">
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">الرسالة</label>
+                            <textarea rows="4" class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-purple-500 focus:ring-2 focus:ring-purple-200 outline-none transition" placeholder="أخبرنا عن احتياجاتك للتوريد..." required></textarea>
+                        </div>
+
+                        <button type="submit" class="w-full py-4 bg-purple-600 text-white rounded-xl font-semibold hover:bg-purple-700 transition shadow-lg hover:shadow-xl flex items-center justify-center gap-2">
+                            <span>إرسال الرسالة</span>
+                            <i data-lucide="send" class="w-5 h-5"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+                <!-- Company Info -->
+                <div class="lg:col-span-2">
+                    <div class="flex items-center gap-2 mb-6">
+                        <i data-lucide="globe" class="w-8 h-8 text-purple-400"></i>
+                        <span class="text-2xl font-bold">ييوو بروسيس للتجارة</span>
+                    </div>
+                    <p class="text-gray-400 mb-6 max-w-md">
+                        شريكك الموثوق في التجارة الدولية. مقرنا في ييوو، الصين، نربط الشركات العالمية بمنتجات عالية الجودة وخدمات موثوقة.
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="https://www.facebook.com/share/19tXrD4UZ4/?mibextid=wwXIfr" target="_blank" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-blue-600 transition">
+                            <i data-lucide="facebook" class="w-5 h-5"></i>
+                        </a>
+                        <a href="https://www.instagram.com/_y.1_" target="_blank" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-pink-600 transition">
+                            <i data-lucide="instagram" class="w-5 h-5"></i>
+                        </a>
+                        <a href="https://wa.me/008613270858500" target="_blank" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-green-500 transition">
+                            <i data-lucide="message-circle" class="w-5 h-5"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="text-lg font-semibold mb-6">روابط سريعة</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#home" class="text-gray-400 hover:text-white transition">الرئيسية</a></li>
+                        <li><a href="#about" class="text-gray-400 hover:text-white transition">من نحن</a></li>
+                        <li><a href="#services" class="text-gray-400 hover:text-white transition">خدماتنا</a></li>
+                        <li><a href="#products" class="text-gray-400 hover:text-white transition">المنتجات</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-white transition">اتصل بنا</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Info -->
+                <div>
+                    <h4 class="text-lg font-semibold mb-6">اتصال</h4>
+                    <ul class="space-y-3 text-gray-400">
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="map-pin" class="w-5 h-5 mt-0.5 flex-shrink-0"></i>
+                            <a href="https://www.google.com/maps/search/?api=1&query=浙江省义乌市稠州北路699号金茂大厦2109室" target="_blank" class="hover:text-white transition">
+                                浙江省义乌市稠州北路699号金茂大厦2109室
+                            </a>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i data-lucide="phone" class="w-5 h-5 flex-shrink-0"></i>
+                            <a href="tel:8613270858500" class="hover:text-white transition">86 13270858500</a>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i data-lucide="mail" class="w-5 h-5 flex-shrink-0"></i>
+                            <a href="mailto:mmtseha@gmail.com" class="hover:text-white transition">mmtseha@gmail.com</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-gray-500 text-sm">
+                    © 2024 ييوو بروسيس للتجارة. جميع الحقوق محفوظة.
+                </p>
+                <div class="flex items-center gap-2 text-gray-500 text-sm">
+                    <span>صنع بـ</span>
+                    <i data-lucide="heart" class="w-4 h-4 text-red-500 fill-current"></i>
+                    <span>في ييوو، الصين</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript (unchanged functionality) -->
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const closeMenuBtn = document.getElementById('close-menu');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const overlay = document.getElementById('overlay');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        function toggleMenu() {
+            mobileMenu.classList.toggle('active');
+            overlay.classList.toggle('active');
+            document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+        }
+
+        mobileMenuBtn.addEventListener('click', toggleMenu);
+        closeMenuBtn.addEventListener('click', toggleMenu);
+        overlay.addEventListener('click', toggleMenu);
+        
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', toggleMenu);
+        });
+
+        // Navbar Scroll Effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('nav-scrolled');
+            } else {
+                navbar.classList.remove('nav-scrolled');
+            }
+        });
+
+        // Smooth Scroll for Anchor Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Contact Form Handler
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Show success message
+            const btn = this.querySelector('button[type="submit"]');
+            const originalContent = btn.innerHTML;
+            
+            btn.innerHTML = '<span>تم الإرسال!</span> <i data-lucide="check" class="w-5 h-5"></i>';
+            btn.classList.remove('bg-purple-600', 'hover:bg-purple-700');
+            btn.classList.add('bg-green-600', 'hover:bg-green-700');
+            lucide.createIcons();
+            
+            setTimeout(() => {
+                this.reset();
+                btn.innerHTML = originalContent;
+                btn.classList.add('bg-purple-600', 'hover:bg-purple-700');
+                btn.classList.remove('bg-green-600', 'hover:bg-green-700');
+                lucide.createIcons();
+            }, 3000);
+        });
+
+        // Intersection Observer for Animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements
+        document.querySelectorAll('.card-hover').forEach((el, index) => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = `all 0.6s ease ${index * 0.1}s`;
+            observer.observe(el);
+        });
+    </script>
+
+</body>
+</html>
