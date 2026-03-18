@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> المجال الصناعي - ييوو بروسيس</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Tajawal', sans-serif; scroll-behavior: smooth; }
+        .gradient-text {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .hero-gradient { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+        .card-hover { transition: all 0.3s ease; }
+        .card-hover:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
+        .nav-scrolled { background: white; box-shadow: 0 2px 20px rgba(0,0,0,0.1); }
+        .mobile-menu { transform: translateX(100%); transition: transform 0.3s ease-in-out; }
+        .mobile-menu.active { transform: translateX(0); }
+        .overlay { opacity: 0; visibility: hidden; transition: all 0.3s ease-in-out; }
+        .overlay.active { opacity: 1; visibility: visible; }
+/* Lightbox modal */
+.lightbox-modal {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.8);
+    z-index: 9999;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.lightbox-modal.active { display: flex; }
+.lightbox-content {
+    max-width: 90%;
+    max-height: 80%;
+    background: white;
+    border-radius: 1rem;
+    padding: 1rem;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.lightbox-img {
+    max-width: 100%;
+    max-height: 70vh;
+    object-fit: contain;
+    border-radius: 0.5rem;
+}
+.lightbox-desc {
+    text-align: center;
+    margin: 1rem 0;
+    font-size: 1.2rem;
+    color: #333;
+    width: 100%;
+}
+.lightbox-nav {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    width: 100%;
+    margin-top: 0.5rem;
+}
+.lightbox-nav button {
+    background: #7c3aed;
+    color: white;
+    border: none;
+    border-radius: 9999px;
+    width: 4rem;
+    height: 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.2s;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+.lightbox-nav button:hover { background: #6d28d9; }
+.lightbox-close {
+    position: absolute;
+    top: 0.5rem; left: 0.5rem;
+    background: white;
+    border-radius: 9999px;
+    width: 2.5rem;
+    height: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    z-index: 10;
+}
+        /* Thumbnail strip */
+        .thumbnail-strip {
+            display: flex;
+            gap: 0.5rem;
+            overflow-x: auto;
+            padding: 1rem 0;
+            direction: ltr; /* keep LTR for horizontal scroll, but thumbnails will still be RTL if needed */
+        }
+        .thumbnail-strip img {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: border 0.2s;
+        }
+        .thumbnail-strip img:hover {
+            border-color: #7c3aed;
+        }
+        .thumbnail-strip img.active-thumb {
+            border-color: #7c3aed;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <!-- Navigation (same as before) -->
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 bg-white/90 backdrop-blur-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex items-center">
+                    <a href="index.html" class="text-2xl font-bold gradient-text flex items-center gap-2">
+                        <img src="imgs\Logo.jpg" alt="Yiwu Process Trading" class="h-20 w-auto">
+                        <span>شركة الرقي التجارية المحدودة المحدودة المحدودة المحدودة</span>
+                    </a>
+                </div>
+                <div class="hidden md:flex items-center space-x-8 space-x-reverse">
+                    <a href="index.html#home" class="text-gray-700 hover:text-purple-600 font-medium transition">الرئيسية</a>
+                    <a href="index.html#about" class="text-gray-700 hover:text-purple-600 font-medium transition">من نحن</a>
+                    <a href="index.html#services" class="text-gray-700 hover:text-purple-600 font-medium transition">خدماتنا</a>
+                    <a href="index.html#products" class="text-gray-700 hover:text-purple-600 font-medium transition">المنتجات</a>
+                    <a href="index.html" class="flex items-center gap-1 px-3 py-2 border border-gray-300 rounded-full text-gray-700 hover:bg-purple-50 transition">
+                        <i data-lucide="globe" class="w-4 h-4"></i>
+                        <span>English</span>
+                    </a>
+                    <a href="index.html#contact" class="px-6 py-2.5 bg-purple-600 text-white rounded-full font-medium hover:bg-purple-700 transition">اتصل بنا</a>
+                </div>
+                <div class="md:hidden flex items-center gap-2">
+                    <a href="index.html" class="p-2 text-gray-700">
+                        <i data-lucide="globe" class="w-5 h-5"></i>
+                        <span class="text-sm">EN</span>
+                    </a>
+                    <button id="mobile-menu-btn" class="text-gray-700">
+                        <i data-lucide="menu" class="w-6 h-6"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile menu overlay and menu (same as before) -->
+        <div id="overlay" class="overlay fixed inset-0 bg-black/50 z-40 md:hidden"></div>
+        <div id="mobile-menu" class="mobile-menu fixed top-0 right-0 w-80 h-full bg-white z-50 shadow-2xl md:hidden">
+            <div class="p-6">
+                <div class="flex justify-between items-center mb-8">
+                    <span class="text-xl font-bold gradient-text">القائمة</span>
+                    <button id="close-menu" class="text-gray-500 hover:text-purple-600">
+                        <i data-lucide="x" class="w-6 h-6"></i>
+                    </button>
+                </div>
+                <div class="flex flex-col space-y-4">
+                    <a href="index.html#home" class="text-gray-700 hover:text-purple-600 font-medium text-lg py-2 border-b border-gray-100 mobile-link">الرئيسية</a>
+                    <a href="index.html#about" class="text-gray-700 hover:text-purple-600 font-medium text-lg py-2 border-b border-gray-100 mobile-link">من نحن</a>
+                    <a href="index.html#services" class="text-gray-700 hover:text-purple-600 font-medium text-lg py-2 border-b border-gray-100 mobile-link">خدماتنا</a>
+                    <a href="index.html#products" class="text-gray-700 hover:text-purple-600 font-medium text-lg py-2 border-b border-gray-100 mobile-link">المنتجات</a>
+                    <a href="index.html" class="flex items-center gap-2 text-gray-700 hover:text-purple-600 font-medium text-lg py-2 border-b border-gray-100">
+                        <i data-lucide="globe" class="w-5 h-5"></i>
+                        <span>English</span>
+                    </a>
+                    <a href="index.html#contact" class="text-gray-700 hover:text-purple-600 font-medium text-lg py-2 border-b border-gray-100 mobile-link">اتصل بنا</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="pt-32 pb-12 bg-white">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <h1 class="text-4xl font-bold text-gray-900 mb-4">المجال الصناعي</h1>
+            <p class="text-gray-600"> جميع المكائن و مستلزمات الصناعة</p>
+        </div>
+    </section>
+
+<!-- Product Images Grid (with description) -->
+<section class="pb-10">
+    <div class="max-w-7xl mx-auto px-4">
+        <div id="gallery-grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+
+            <!-- Image 0 -->
+            <div class="gallery-item bg-white p-4 rounded-xl shadow-md hover:shadow-xl transition" data-index="0">
+                <img src="" alt="Screws" class="w-full h-48 object-cover rounded-lg cursor-pointer" onclick="openLightbox(0)">
+                <p class="text-center text-sm text-gray-700 mt-2"></p>
+
+            </div>
+            <!--image 2 ( )-->
+            <div class="gallery-item bg-white p-4 rounded-xl shadow-md hover:shadow-xl transition" data-index="0">
+                <img src="" alt="Screws" class="w-full h-48 object-cover rounded-lg cursor-pointer" onclick="openLightbox(0)">
+                <p class="text-center text-sm text-gray-700 mt-2"></p>
+
+            </div>
+            <!--image 3 ( )-->
+            <div class="gallery-item bg-white p-4 rounded-xl shadow-md hover:shadow-xl transition" data-index="0">
+                <img src="" alt="Screws" class="w-full h-48 object-cover rounded-lg cursor-pointer" onclick="openLightbox(0)">
+                <p class="text-center text-sm text-gray-700 mt-2"></p>
+            </div>
+              <!--image 3 ( )-->
+              <div class="gallery-item bg-white p-4 rounded-xl shadow-md hover:shadow-xl transition" data-index="0">
+                <img src="imgs/construction_cover.png" alt="Screws" class="w-full h-48 object-cover rounded-lg cursor-pointer" onclick="openLightbox(0)">
+                <p class="text-center text-sm text-gray-700 mt-2">Fittings in all materials :<br>PPR fittings <br> Brass fittings <br> extra..  </p>
+            </div>
+            <!--
+            -- Image 0 --
+            <div class="gallery-item bg-white p-4 rounded-xl shadow-md hover:shadow-xl transition" data-index="0">
+                <img src="imgs/export_imgs/industrial/const_img_15.jpg" alt="منتج 1" class="w-full h-48 object-cover rounded-lg cursor-pointer" onclick="openLightbox(0)">
+                <p class="text-center text-sm text-gray-700 mt-2">مسامير - Drywall screw</p>
+            </div>
+            <-- Image 1 --
+            <div class="gallery-item bg-white p-4 rounded-xl shadow-md hover:shadow-xl transition" data-index="1">
+                <img src="imgs/export_imgs/industrial/const_img_16.jpg" alt="منتج 2" class="w-full h-48 object-cover rounded-lg cursor-pointer" onclick="openLightbox(1)">
+                <p class="text-center text-sm text-gray-700 mt-2">رولات فايبر Fiber rolls</p>
+            </div>
+            <-- Image 2 --
+            <div class="gallery-item bg-white p-4 rounded-xl shadow-md hover:shadow-xl transition" data-index="2">
+                <img src="imgs/export_imgs/industrial/const_img_3.jpg" alt="منتج 3" class="w-full h-48 object-cover rounded-lg cursor-pointer" onclick="openLightbox(2)">
+                <p class="text-center text-sm text-gray-700 mt-2">variety of different locks<br>اقفال بجميع المقاسات والمواد المختلفه</p>
+            </div>
+            <-- Image 3 --
+            <div class="gallery-item bg-white p-4 rounded-xl shadow-md hover:shadow-xl transition" data-index="3">
+                <img src="imgs/export_imgs/industrial/const_img_4.jpg" alt="منتج 4" class="w-full h-48 object-cover rounded-lg cursor-pointer" onclick="openLightbox(3)">
+                <p class="text-center text-sm text-gray-700 mt-2">variety of different locks<br>اقفال بجميع المقاسات والمواد المختلفه</p>
+            </div>
+            <-- Image 4 --
+            <div class="gallery-item bg-white p-4 rounded-xl shadow-md hover:shadow-xl transition" data-index="4">
+                <img src="imgs/export_imgs/industrial/const_img_5.jpg" alt="منتج 5" class="w-full h-48 object-cover rounded-lg cursor-pointer" onclick="openLightbox(4)">
+                <p class="text-center text-sm text-gray-700 mt-2">كماشات بمختلف المقاسات والانواع - Nail Cutters</p>
+            </div>
+            -- Image 5 
+            <div class="gallery-item bg-white p-4 rounded-xl shadow-md hover:shadow-xl transition" data-index="5">
+                <img src="imgs/export_imgs/industrial/const_img_6.jpg" alt="منتج 6" class="w-full h-48 object-cover rounded-lg cursor-pointer" onclick="openLightbox(5)">
+                <p class="text-center text-sm text-gray-700 mt-2">Paint rollers / roller hands <br> رولات صباغة ومماسك للرولات </p>
+            </div>
+            -- Image 6 -
+            <div class="gallery-item bg-white p-4 rounded-xl shadow-md hover:shadow-xl transition" data-index="6">
+                <img src="imgs/export_imgs/industrial/const_img_7.jpg" alt="منتج 7" class="w-full h-48 object-cover rounded-lg cursor-pointer" onclick="openLightbox(6)">
+                <p class="text-center text-sm text-gray-700 mt-2">molds and variety of industrial-machinery equipment - قوالب وقطع غيار للمكائن المختلفه</p>
+            </div>
+            <-- Image 7 --
+            <div class="gallery-item bg-white p-4 rounded-xl shadow-md hover:shadow-xl transition" data-index="7">
+                <img src="imgs/export_imgs/industrial/const_img_8.jpg" alt="منتج 8" class="w-full h-48 object-cover rounded-lg cursor-pointer" onclick="openLightbox(7)">
+                <p class="text-center text-sm text-gray-700 mt-2">Different types of doorhandles for each market - مختلف مماسك الابواب بالمواصفات والمقاسات حسب السوق المستهدف</p>
+            </div>
+            <-- Image 8 --
+            <div class="gallery-item bg-white p-4 rounded-xl shadow-md hover:shadow-xl transition" data-index="8">
+                <img src="imgs/export_imgs/industrial/const_img_9.jpg" alt="منتج 9" class="w-full h-48 object-cover rounded-lg cursor-pointer" onclick="openLightbox(8)">
+                <p class="text-center text-sm text-gray-700 mt-2">Customized packaging for each product - تصاميم وتغليف خاص لجميع المنتجات</p>
+            </div>
+            <-- Image 9 --
+            <div class="gallery-item bg-white p-4 rounded-xl shadow-md hover:shadow-xl transition" data-index="9">
+                <img src="imgs/export_imgs/industrial/const_img_10.jpg" alt="منتج 10" class="w-full h-48 object-cover rounded-lg cursor-pointer" onclick="openLightbox(9)">
+                <p class="text-center text-sm text-gray-700 mt-2">All types of pipes and plumbing - حنفيات , مواصير , بايبات</p>
+            </div>
+            <-- Image 10 --
+            <div class="gallery-item bg-white p-4 rounded-xl shadow-md hover:shadow-xl transition" data-index="10">
+                <img src="imgs/export_imgs/industrial/const_img_11.jpg" alt="منتج 11" class="w-full h-48 object-cover rounded-lg cursor-pointer" onclick="openLightbox(10)">
+                <p class="text-center text-sm text-gray-700 mt-2">امكانية توفير جميع المقاسات والمواصفات المختلفة حسب الطلب</p>
+            </div>
+            <-- Image 11 --
+            <div class="gallery-item bg-white p-4 rounded-xl shadow-md hover:shadow-xl transition" data-index="11">
+                <img src="imgs/export_imgs/industrial/const_img_12.jpg" alt="منتج 12" class="w-full h-48 object-cover rounded-lg cursor-pointer" onclick="openLightbox(11)">
+                <p class="text-center text-sm text-gray-700 mt-2">امكانية توفير جميع المقاسات والمواصفات المختلفة حسب الطلب</p>
+            </div>
+            <-- Image 12 --
+            <div class="gallery-item bg-white p-4 rounded-xl shadow-md hover:shadow-xl transition" data-index="12">
+                <img src="imgs/export_imgs/industrial/const_img_13.jpg" alt="منتج 13" class="w-full h-48 object-cover rounded-lg cursor-pointer" onclick="openLightbox(12)">
+                <p class="text-center text-sm text-gray-700 mt-2">امكانية توفير جميع المقاسات والمواصفات المختلفة حسب الطلب</p>
+            </div>
+            <-- Image 13 --
+            <div class="gallery-item bg-white p-4 rounded-xl shadow-md hover:shadow-xl transition" data-index="13">
+                <img src="imgs/export_imgs/industrial/const_img_14.jpg" alt="منتج 14" class="w-full h-48 object-cover rounded-lg cursor-pointer" onclick="openLightbox(13)">
+                <p class="text-center text-sm text-gray-700 mt-2">Order suggestions that suits your exact market <br> تنسيق وتوصية للمنتجات المناسبة للسوق المستهدف </p>
+            </div>
+            <-- Image 14 --
+            <div class="gallery-item bg-white p-4 rounded-xl shadow-md hover:shadow-xl transition" data-index="14">
+                <img src="imgs/export_imgs/industrial/const_img_15.jpg" alt="منتج 15" class="w-full h-48 object-cover rounded-lg cursor-pointer" onclick="openLightbox(14)">
+                <p class="text-center text-sm text-gray-700 mt-2">Order suggestions that suits your exact market <br> تنسيق وتوصية للمنتجات المناسبة للسوق المستهدف </p>
+            </div>
+            <-- Image 15 --
+            <div class="gallery-item bg-white p-4 rounded-xl shadow-md hover:shadow-xl transition" data-index="15">
+                <img src="imgs/export_imgs/industrial/const_img_1.jpg" alt="منتج 16" class="w-full h-48 object-cover rounded-lg cursor-pointer" onclick="openLightbox(15)">
+                <p class="text-center text-sm text-gray-700 mt-2">variety of house decor products <br> جميع وختلف اكسسوارات البناء والديكور </p>
+            </div>
+            <-- Image 16 --
+            <div class="gallery-item bg-white p-4 rounded-xl shadow-md hover:shadow-xl transition" data-index="16">
+                <img src="imgs/export_imgs/industrial/const_img_2.jpg" alt="منتج 17" class="w-full h-48 object-cover rounded-lg cursor-pointer" onclick="openLightbox(16)">
+                <p class="text-center text-sm text-gray-700 mt-2">variety of house decor products <br> جميع وختلف اكسسوارات البناء والديكور </p>
+            </div>
+        -->
+        </div>
+    </div>
+</section>
+
+    <!-- Thumbnail Strip -->
+    <section class="pb-20">
+        <div class="max-w-7xl mx-auto px-4">
+            <h3 class="text-xl font-bold text-gray-900 mb-4 text-center">جميع الصور</h3>
+            <div id="thumbnail-strip" class="thumbnail-strip">
+                <!-- Thumbnails will be generated by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <div id="lightbox" class="lightbox-modal">
+        <div class="lightbox-content">
+            <div class="lightbox-close" onclick="closeLightbox()">
+                <i data-lucide="x" class="w-6 h-6"></i>
+            </div>
+            <img id="lightbox-img" class="lightbox-img" src="" alt="">
+            <div id="lightbox-desc" class="lightbox-desc"></div>
+            <div class="lightbox-nav">
+                <button onclick="changeImage(-1)"><i data-lucide="chevron-right" class="w-6 h-6"></i></button>
+                <button onclick="changeImage(1)"><i data-lucide="chevron-left" class="w-6 h-6"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer (same as before) -->
+    <footer class="bg-gray-900 text-white py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+                <div class="lg:col-span-2">
+                    <div class="flex items-center gap-2 mb-6">
+                        <img src="imgs\Logo.jpg" alt="Yiwu Process Trading" class="h-20 w-auto">
+                        <span class="text-2xl font-bold">شركة الرقي التجارية المحدودة المحدودة المحدودة المحدودة المحدودة</span>
+                    </div>
+                    <p class="text-gray-400 mb-6 max-w-md">
+                        شريكك الموثوق في التجارة الدولية. مقرنا في ييوو، الصين، نربط الشركات العالمية بمنتجات عالية الجودة وخدمات موثوقة.
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="https://www.facebook.com/share/19tXrD4UZ4/?mibextid=wwXIfr" target="_blank" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-blue-600 transition">
+                            <i data-lucide="facebook" class="w-5 h-5"></i>
+                        </a>
+                        <a href="https://www.instagram.com/_y.1_" target="_blank" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-pink-600 transition">
+                            <i data-lucide="instagram" class="w-5 h-5"></i>
+                        </a>
+                        <a href="https://wa.me/008613270858500" target="_blank" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-green-500 transition">
+                            <i data-lucide="message-circle" class="w-5 h-5"></i>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-6">روابط سريعة</h4>
+                    <ul class="space-y-3">
+                        <li><a href="index.html#home" class="text-gray-400 hover:text-white transition">الرئيسية</a></li>
+                        <li><a href="index.html#about" class="text-gray-400 hover:text-white transition">من نحن</a></li>
+                        <li><a href="index.html#services" class="text-gray-400 hover:text-white transition">خدماتنا</a></li>
+                        <li><a href="index.html#products" class="text-gray-400 hover:text-white transition">المنتجات</a></li>
+                        <li><a href="index.html#contact" class="text-gray-400 hover:text-white transition">اتصل بنا</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-6">اتصال</h4>
+                    <ul class="space-y-3 text-gray-400">
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="map-pin" class="w-5 h-5 mt-0.5 flex-shrink-0"></i>
+                            <a href="https://www.google.com/maps/search/?api=1&query=浙江省义乌市稠州北路699号金茂大厦2109室" target="_blank" class="hover:text-white transition">
+                                浙江省义乌市稠州北路699号金茂大厦2109室
+                            </a>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i data-lucide="phone" class="w-5 h-5 flex-shrink-0"></i>
+                            <a href="tel:8613270858500" class="hover:text-white transition">86 13270858500</a>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i data-lucide="mail" class="w-5 h-5 flex-shrink-0"></i>
+                            <a href="mailto:mmtseha@gmail.com" class="hover:text-white transition">mmtseha@gmail.com</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-gray-500 text-sm">© 2024 شركة الرقي التجارية المحدودة المحدودة المحدودة المحدودة. جميع الحقوق محفوظة.</p>
+                <div class="flex items-center gap-2 text-gray-500 text-sm">
+                    <span>صنع بـ</span>
+                    <i data-lucide="heart" class="w-4 h-4 text-red-500 fill-current"></i>
+                    <span>في ييوو، الصين</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+
+        // Mobile menu toggle (same as before)
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const closeMenuBtn = document.getElementById('close-menu');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const overlay = document.getElementById('overlay');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+        function toggleMenu() {
+            mobileMenu.classList.toggle('active');
+            overlay.classList.toggle('active');
+            document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+        }
+        mobileMenuBtn.addEventListener('click', toggleMenu);
+        closeMenuBtn.addEventListener('click', toggleMenu);
+        overlay.addEventListener('click', toggleMenu);
+        mobileLinks.forEach(link => link.addEventListener('click', toggleMenu));
+
+        // ---------- GALLERY LIGHTBOX ----------
+        // Collect all gallery items
+        const galleryItems = document.querySelectorAll('.gallery-item');
+        let currentIndex = 0;
+
+        // Prepare data arrays from existing items
+        const images = [];
+        const descriptions = [];
+
+        galleryItems.forEach((item, index) => {
+            const img = item.querySelector('img');
+            const desc = item.querySelector('p').innerText;
+            images.push(img.src);
+            descriptions.push(desc);
+        });
+
+        // Thumbnail strip generation
+        const stripContainer = document.getElementById('thumbnail-strip');
+        images.forEach((src, idx) => {
+            const thumb = document.createElement('img');
+            thumb.src = src;
+            thumb.alt = 'تصغير';
+            thumb.onclick = () => openLightbox(idx);
+            stripContainer.appendChild(thumb);
+        });
+
+        // Lightbox elements
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const lightboxDesc = document.getElementById('lightbox-desc');
+
+        function openLightbox(index) {
+            currentIndex = index;
+            updateLightbox();
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            highlightThumbnail(index);
+        }
+
+        function closeLightbox() {
+            lightbox.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        function updateLightbox() {
+            lightboxImg.src = images[currentIndex];
+            lightboxDesc.innerText = descriptions[currentIndex];
+        }
+
+        function changeImage(direction) {
+            currentIndex = (currentIndex + direction + images.length) % images.length;
+            updateLightbox();
+            highlightThumbnail(currentIndex);
+        }
+
+        function highlightThumbnail(index) {
+            const thumbs = stripContainer.querySelectorAll('img');
+            thumbs.forEach((thumb, i) => {
+                if (i === index) {
+                    thumb.classList.add('active-thumb');
+                } else {
+                    thumb.classList.remove('active-thumb');
+                }
+            });
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (!lightbox.classList.contains('active')) return;
+            if (e.key === 'ArrowLeft') changeImage(1);
+            if (e.key === 'ArrowRight') changeImage(-1);
+            if (e.key === 'Escape') closeLightbox();
+        });
+
+        // Close on outside click
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) closeLightbox();
+        });
+    </script>
+</body>
+</html>
